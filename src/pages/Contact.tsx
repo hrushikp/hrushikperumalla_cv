@@ -97,73 +97,80 @@ export default function Contact() {
       {/* Contact Section */}
       <section className="py-20">
         <div className="container-custom mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            
-            {/* Schedule Meeting */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <div className="glass-card rounded-2xl p-8">
-                <div className="flex items-center space-x-3 mb-8">
-                  <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center">
-                    <Calendar className="w-6 h-6 text-background" />
-                  </div>
-                  <div>
-                    <h2 className="text-2xl font-sora font-bold text-text-high">
-                      Schedule a Meeting
-                    </h2>
-                    <p className="text-text-medium">
-                      Let's discuss your project or collaboration opportunities
-                    </p>
-                  </div>
+          {/* Schedule Meeting - Full Width */}
+          <motion.div
+            className="mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <div className="glass-card rounded-2xl p-8 text-center">
+              <div className="flex items-center justify-center space-x-3 mb-8">
+                <div className="w-16 h-16 bg-gradient-primary rounded-2xl flex items-center justify-center">
+                  <Calendar className="w-8 h-8 text-background" />
                 </div>
-
-                <div className="space-y-6">
-                  <p className="text-text-medium leading-relaxed">
-                    Ready to discuss data science projects, machine learning solutions, or potential collaborations? 
-                    Book a convenient time slot that works for both of us.
+                <div>
+                  <h2 className="text-3xl font-sora font-bold text-text-high">
+                    Schedule a Meeting
+                  </h2>
+                  <p className="text-text-medium">
+                    Online sessions or coffee chats - let's discuss your ideas!
                   </p>
-                  
+                </div>
+              </div>
+
+              <div className="max-w-2xl mx-auto space-y-6">
+                <p className="text-text-medium leading-relaxed">
+                  Ready to discuss data science projects, machine learning solutions, or potential collaborations? 
+                  Choose between an online video call or, if you're in Potsdam/Berlin, let's meet for coffee!
+                </p>
+                
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button 
                     onClick={() => window.open('#', '_blank')}
                     variant="hero" 
-                    size="lg" 
-                    className="w-full"
+                    size="lg"
                   >
-                    Book a Meeting
+                    Book Online Meeting
                     <Calendar className="w-5 h-5" />
                   </Button>
-                  
-                  <div className="pt-4 border-t border-border">
-                    <p className="text-text-low text-sm text-center">
-                      Available Monday - Friday, 9 AM - 6 PM CET
-                    </p>
-                  </div>
+                  <Button 
+                    variant="glass" 
+                    size="lg"
+                  >
+                    Coffee Chat ☕
+                    <Coffee className="w-5 h-5" />
+                  </Button>
+                </div>
+                
+                <div className="pt-4 border-t border-border">
+                  <p className="text-text-low text-sm">
+                    Available Monday - Friday, 9 AM - 6 PM CET
+                  </p>
                 </div>
               </div>
-            </motion.div>
+            </div>
+          </motion.div>
 
-            {/* Contact Info */}
+          {/* Contact Info - Full Width Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Direct Contact */}
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
+              initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="space-y-8"
             >
-              {/* Direct Contact */}
-              <div className="glass-card rounded-2xl p-8">
-                <h3 className="text-xl font-sora font-bold text-text-high mb-6">
+              <div className="glass-card rounded-2xl p-8 h-full">
+                <h3 className="text-2xl font-sora font-bold text-text-high mb-6">
                   Contact Information
                 </h3>
                 <div className="space-y-6">
                   {contactInfo.map((info) => (
                     <div key={info.label} className="flex items-center space-x-4">
-                      <div className="w-10 h-10 bg-aurora-primary/10 rounded-lg flex items-center justify-center">
-                        <info.icon className="w-5 h-5 text-aurora-primary" />
+                      <div className="w-12 h-12 bg-aurora-primary/10 rounded-lg flex items-center justify-center">
+                        <info.icon className="w-6 h-6 text-aurora-primary" />
                       </div>
                       <div>
                         <div className="text-sm text-text-medium font-medium">
@@ -172,12 +179,12 @@ export default function Contact() {
                         {info.link ? (
                           <a 
                             href={info.link}
-                            className="text-text-high hover:text-aurora-primary transition-colors font-medium"
+                            className="text-text-high hover:text-aurora-primary transition-colors font-medium text-lg"
                           >
                             {info.value}
                           </a>
                         ) : (
-                          <div className="text-text-high font-medium">
+                          <div className="text-text-high font-medium text-lg">
                             {info.value}
                           </div>
                         )}
@@ -186,51 +193,63 @@ export default function Contact() {
                   ))}
                 </div>
               </div>
+            </motion.div>
 
-              {/* Social Links */}
-              <div className="glass-card rounded-2xl p-8">
-                <h3 className="text-xl font-sora font-bold text-text-high mb-6">
-                  Connect Online
-                </h3>
-                <div className="space-y-4">
-                  {socialLinks.map((social) => (
-                    <a
-                      key={social.label}
-                      href={social.link}
-                      className="flex items-center space-x-4 p-3 rounded-lg hover:bg-surface/30 transition-all duration-300 group"
-                    >
-                      <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <social.icon className="w-5 h-5 text-background" />
-                      </div>
-                      <div>
-                        <div className="text-text-high font-medium">
-                          {social.label}
+            {/* Connect Online & Coffee Chat */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <div className="space-y-6 h-full">
+                {/* Social Links */}
+                <div className="glass-card rounded-2xl p-8">
+                  <h3 className="text-2xl font-sora font-bold text-text-high mb-6">
+                    Connect Online
+                  </h3>
+                  <div className="space-y-4">
+                    {socialLinks.map((social) => (
+                      <a
+                        key={social.label}
+                        href={social.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center space-x-4 p-3 rounded-lg hover:bg-surface/30 transition-all duration-300 group"
+                      >
+                        <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                          <social.icon className="w-6 h-6 text-background" />
                         </div>
-                        <div className="text-text-medium text-sm">
-                          {social.username}
+                        <div>
+                          <div className="text-text-high font-medium text-lg">
+                            {social.label}
+                          </div>
+                          <div className="text-text-medium">
+                            {social.username}
+                          </div>
                         </div>
-                      </div>
-                    </a>
-                  ))}
-                </div>
-              </div>
-
-              {/* Quick Note */}
-              <div className="glass-card rounded-2xl p-8 bg-gradient-to-br from-aurora-primary/10 to-aurora-secondary/10 border-aurora-primary/20">
-                <div className="flex items-start space-x-4">
-                  <div className="w-10 h-10 bg-aurora-secondary/20 rounded-lg flex items-center justify-center">
-                    <Coffee className="w-5 h-5 text-aurora-secondary" />
+                      </a>
+                    ))}
                   </div>
-                  <div>
-                    <h3 className="text-lg font-sora font-bold text-text-high mb-2">
-                      Coffee Chat?
-                    </h3>
-            <p className="text-text-medium leading-relaxed">
-              Living in Potsdam or Berlin? I know the best coffee spots in both cities! Let's grab a cup at 
-              Coffee Fellows in Potsdam or any cozy cafe in Berlin and chat about data, tech, 
-              or even my latest cycling routes around Sanssouci. Fair warning: I might 
-              accidentally slip into Telugu when I get excited about a project! 
-            </p>
+                </div>
+
+                {/* Coffee Chat Note */}
+                <div className="glass-card rounded-2xl p-8 bg-gradient-to-br from-aurora-primary/10 to-aurora-secondary/10 border-aurora-primary/20">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-aurora-secondary/20 rounded-lg flex items-center justify-center">
+                      <Coffee className="w-6 h-6 text-aurora-secondary" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-sora font-bold text-text-high mb-2">
+                        Coffee Chat in Berlin/Potsdam?
+                      </h3>
+                      <p className="text-text-medium leading-relaxed">
+                        Living in the area? I know the best coffee spots! Let's grab a cup at 
+                        Coffee Fellows in Potsdam or any cozy cafe in Berlin and chat about data, tech, 
+                        or even my latest cycling routes around Sanssouci. Fair warning: I might 
+                        accidentally slip into Telugu when I get excited about a project! 
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>

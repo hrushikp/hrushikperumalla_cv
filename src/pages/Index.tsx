@@ -1,12 +1,12 @@
 import HeroSection from "@/components/home/HeroSection";
-import FeaturedProjects from "@/components/home/FeaturedProjects";
+import Education from "@/components/home/Education";
 import SkillsPreview from "@/components/home/SkillsPreview";
 
 const Index = () => {
   return (
     <>
       <HeroSection />
-      <FeaturedProjects />
+      <Education />
       <SkillsPreview />
     </>
   );

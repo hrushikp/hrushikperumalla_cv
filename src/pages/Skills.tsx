@@ -564,7 +564,11 @@ export default function Skills() {
               I'm here to help bring your projects to life.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="hero" size="lg">
+              <Button 
+                variant="hero" 
+                size="lg"
+                onClick={() => window.location.href = '/contact'}
+              >
                 Discuss a Project
                 <ExternalLink className="w-5 h-5" />
               </Button>
