@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Aurora Ember Design System - Premium Portfolio Theme */
+
+@layer base {
+  :root {
+    /* Classy Blue & White Theme */
+    --elegant-blue: 220 85% 65%;          /* #4A90E2 Sophisticated blue */
+    --royal-blue: 230 70% 55%;            /* #3366CC Deep royal blue */
+    --ice-white: 210 20% 95%;             /* #F0F2F5 Pure ice white */
+    --pearl-white: 0 0% 98%;              /* #FAFAFA Elegant pearl white */
+    --steel-blue: 215 25% 35%;            /* #4A5568 Steel blue */
+    --midnight-blue: 220 35% 12%;         /* #1A202C Midnight blue */
+    
+    /* Primary System */
+    --aurora-primary: var(--elegant-blue);
+    --aurora-secondary: var(--ice-white);
+    --aurora-accent: var(--pearl-white);
+    
+    /* Elegant Foundation */
+    --background: 220 25% 8%;              /* Deep midnight */
+    --surface: var(--midnight-blue);
+    --surface-elevated: var(--steel-blue);
+    
+    /* Refined Text Hierarchy */
+    --text-high: 0 0% 98%;                /* Pure white for maximum contrast */
+    --text-medium: 210 15% 75%;           /* Soft gray for readable text */
+    --text-low: 215 12% 55%;              /* Muted gray for subtle text */
+    
+    /* Premium Interactive Elements */
+    --border: 215 20% 20%;                /* Sophisticated border */
+    --border-hover: 215 25% 28%;          /* Elevated border on hover */
+    
+    /* Status Colors */
+    --success: 142 71% 41%;               /* #16BD6D */
+    --warning: 45 93% 58%;                /* #F9C23C */
+    --danger: 0 91% 58%;                  /* #EF4444 */
+    
+    /* Luxury Gradients */
+    --grad-primary: linear-gradient(135deg, hsl(var(--elegant-blue)) 0%, hsl(var(--royal-blue)) 100%);
+    --grad-ember: linear-gradient(135deg, hsl(var(--ice-white)) 0%, hsl(var(--elegant-blue)) 100%);
+    --grad-surface: linear-gradient(135deg, hsl(var(--surface)) 0%, hsl(var(--surface-elevated)) 100%);
+    
+    /* Glass Effect */
+    --glass-bg: hsla(var(--surface), 0.7);
+    --glass-border: hsla(var(--aurora-primary), 0.2);
+    
+    /* Elegant Shadows */
+    --shadow-sm: 0 2px 12px -2px hsla(220, 39%, 5%, 0.4);
+    --shadow-md: 0 8px 32px -4px hsla(220, 39%, 5%, 0.5);
+    --shadow-lg: 0 20px 48px -8px hsla(220, 39%, 5%, 0.6);
+    --shadow-glow: 0 0 40px hsl(var(--elegant-blue) / 0.4);
+    
+    /* Layout */
+    --radius: 1rem;
+    --radius-lg: 1.5rem;
+    --container-max: 1200px;
+    
+    /* Animation */
+    --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Legacy compatibility */
+    --foreground: var(--text-high);
+    --card: var(--surface);
+    --card-foreground: var(--text-high);
+    --popover: var(--surface-elevated);
+    --popover-foreground: var(--text-high);
+    --primary: var(--aurora-primary);
+    --primary-foreground: var(--background);
+    --secondary: var(--surface-elevated);
+    --secondary-foreground: var(--text-high);
+    --muted: var(--surface);
+    --muted-foreground: var(--text-medium);
+    --accent: var(--aurora-accent);
+    --accent-foreground: var(--text-high);
+    --destructive: var(--danger);
+    --destructive-foreground: var(--text-high);
+    --border: var(--border);
+    --input: var(--surface-elevated);
+    --ring: var(--aurora-primary);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter antialiased;
+    background-image: radial-gradient(circle at 1px 1px, hsla(var(--text-low), 0.15) 1px, transparent 0);
+    background-size: 32px 32px;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sora;
+  }
+
+  code, pre {
+    @apply font-mono;
+  }
+}
+
+@layer components {
+  /* Glass Card Effect */
+  .glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-md);
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    background: var(--grad-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .gradient-ember {
+    background: var(--grad-ember);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Interactive Elements */
+  .glow-on-hover {
+    transition: box-shadow var(--transition-smooth);
+  }
+
+  .glow-on-hover:hover {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Container */
+  .container-custom {
+    max-width: var(--container-max);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  /* Animated Border */
+  .animated-border {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .animated-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--grad-primary);
+    border-radius: inherit;
+    padding: 1px;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: xor;
+    -webkit-mask-composite: xor;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .animation-delay-600 {
+    animation-delay: 600ms;
+  }
+}
